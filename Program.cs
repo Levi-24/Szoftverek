@@ -41,12 +41,40 @@ namespace Szoftverek
 
             Console.WriteLine("11.Feladat:");
             List<string> kategoriak = Feladat11(szoftverek);
-            foreach (var kategoria in kategoriak)
+            if (kategoriak.Count == 0)
             {
-                Console.WriteLine($"\t{kategoria}");
+                Console.WriteLine("\tNincs ilyen szotfver");
+            }
+            else
+            {
+                foreach (var kategoria in kategoriak)
+                {
+                    Console.WriteLine($"\t{kategoria}");
+                }
             }
 
             Console.WriteLine("12.Feladat:");
+            List<int> azonositok = Feladat12(szoftverek);
+            string feladat12 = string.Join(", ", azonositok);
+            if (feladat12 != "")
+            {
+                Console.WriteLine($"\t{feladat12}");
+            }
+            else
+            {
+                Console.WriteLine("\tNincs ilyen szoftver");
+            }
+
+            using (StreamWriter writer = new(@"..\..\..\src\elso_10_fizetos_szoftver", false))
+            {
+                List<Szoftver> tizFizetos = new();
+                tizFizetos.AddRange(szoftverek.Where(x => x.LicencTipus == "fizetős").Take(10));
+                for (int i = 0; i < 10; i++)
+                {
+                    writer.WriteLine(tizFizetos[i]);
+                }   
+            }
+
         }
 
         static List<Szoftver> Feladat7(List<Szoftver> szoftverek)

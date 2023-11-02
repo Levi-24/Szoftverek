@@ -36,7 +36,6 @@ namespace Szoftverek
         {
             return NettoAr + (NettoAr * (Adokulcs / 100));
         }
-
         public override string ToString()
         {
             return $"Azonosito: {Azonosito}, NevEsVerzioszam: {NevEsVerzioszam}, LicencTipus: {LicencTipus}, OpRendszerek: {OpRendszerek}, Kategoria: {Kategoria}, Ertekeles: {Ertekeles}, NettoAr: {NettoAr}, Adokulcs: {Adokulcs};";
